@@ -146,3 +146,31 @@ The `train.py` script is responsible for training a deep learning model for mala
    - After training, the trained model's state dictionary is saved to a file named `model.pth` using `torch.save`.
 
 Overall, this approach follows a standard training procedure for deep learning models, including data loading, model instantiation, defining loss and optimizer, training loop, and model saving. The script is structured to ensure efficient training and easy reproducibility.
+
+## Main Script for Project:
+
+In this project, we approached the task of classifying malaria cell images into infected and uninfected categories using a systematic and modular approach. Here's how we approached each component:
+
+1. **Dataset Generation (`dataset.py`):**
+   - We began by creating a custom dataset class named `MalariaDataset`.
+   - This class reads the image files from the specified directory and generates a dataset containing image paths and corresponding labels (infected or uninfected).
+   - We handled data loading, preprocessing, and labeling within this class to ensure compatibility with PyTorch's `DataLoader`.
+
+2. **Model Definition (`mymodel.py`):**
+   - Next, we defined the architecture of the neural network model responsible for image classification.
+   - Our model, named `MosquitoNet`, is a convolutional neural network (CNN) consisting of multiple layers, including convolutional, batch normalization, activation, max-pooling, and fully connected layers.
+   - We used PyTorch's `nn.Module` to create a modular and customizable model architecture.
+
+3. **Training (`train.py`):**
+   - We then implemented the training pipeline to train the model on the generated dataset.
+   - This involved setting up hyperparameters such as the number of epochs, batch size, and learning rate.
+   - We defined data transformations, including resizing, random horizontal and vertical flips, random rotation, normalization, to augment the dataset and improve model generalization.
+   - The training loop iterated over the dataset batches, performed forward and backward passes, updated model parameters using gradient descent, and calculated training loss and accuracy.
+   - We saved the trained model parameters to disk for future use or inference.
+
+4. **Integration (`main.py`):**
+   - Finally, we integrated the dataset generation, model definition, and training pipeline into a single `main.py` script.
+   - This script orchestrates the entire process, from dataset generation to model training, in a modular and organized manner.
+   - By encapsulating each component into separate files (`dataset.py`, `mymodel.py`, `train.py`), we promote code reusability, readability, and maintainability.
+
+Overall, our approach emphasizes modularity, scalability, and flexibility, allowing for easy experimentation, customization, and extension of the malaria cell image classification pipeline. We leverage the power of PyTorch and its ecosystem to streamline the development process and achieve accurate and reliable results.
