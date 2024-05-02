@@ -174,3 +174,35 @@ In this project, we approached the task of classifying malaria cell images into 
    - By encapsulating each component into separate files (`dataset.py`, `mymodel.py`, `train.py`), we promote code reusability, readability, and maintainability.
 
 Overall, our approach emphasizes modularity, scalability, and flexibility, allowing for easy experimentation, customization, and extension of the malaria cell image classification pipeline. We leverage the power of PyTorch and its ecosystem to streamline the development process and achieve accurate and reliable results.
+
+## Results:
+
+The results indicate the performance of our malaria cell image classification model on the test set. Let's break down the key metrics and findings:
+
+1. **Overall Accuracy:**
+   - The overall accuracy on the test set is reported as 96.13%. This indicates that our model correctly classified 96.13% of the images into their respective categories (infected or uninfected).
+
+2. **Accuracy by Class:**
+   - The accuracy for classifying infected images is reported as 94.93%. This means that among all the infected images in the test set, 94.93% were correctly classified by our model.
+   - The accuracy for classifying uninfected images is reported as 97.36%. Similarly, among all the uninfected images in the test set, 97.36% were correctly classified.
+
+3. **Accuracy Score:**
+   - The accuracy score, which is the same as the overall accuracy mentioned above, is 0.9613 (96.13%).
+
+4. **Classification Report:**
+   - The classification report provides additional insights into the precision, recall, and F1-score for each class (infected and uninfected), along with metrics like support.
+   - Precision measures the proportion of true positive predictions out of all positive predictions made by the model.
+   - Recall measures the proportion of true positive predictions out of all actual positive instances in the dataset.
+   - The F1-score is the harmonic mean of precision and recall, providing a balanced measure of a classifier's performance.
+   - The macro and weighted average metrics provide overall performance measures across both classes.
+
+5. **Confusion Matrix:**
+   - The confusion matrix visualizes the model's performance by showing the count of correct and incorrect predictions for each class.
+   - In this case, the confusion matrix indicates that out of 2780 infected images, 2639 were correctly classified as infected (true positives), while 141 were incorrectly classified as uninfected (false negatives).
+   - Similarly, out of 2730 uninfected images, 2658 were correctly classified as uninfected (true negatives), while 72 were incorrectly classified as infected (false positives).
+
+Overall, these results demonstrate the effectiveness of our model in accurately classifying malaria cell images, with high precision and recall rates for both infected and uninfected classes. The confusion matrix provides additional insights into the specific types of classification errors made by the model.
+
+![fifth_image](https://github.com/Ashishlathkar77/Malaria-Cell-Image-Classification/blob/main/Visualizations/download%20(28).png)
+
+---
