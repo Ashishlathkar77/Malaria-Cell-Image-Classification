@@ -73,7 +73,7 @@ Here's how this approach was implemented:
 
 This approach provides a structured and scalable solution for handling image data, including loading, preprocessing, and transformation, making it suitable for training deep learning models for malaria cell image classification.
 
-## MosquitoNet - MyModel
+## MosquitoNet - MyModel:
 
 Defines a convolutional neural network (CNN) model called `MosquitoNet` using PyTorch's `nn.Module` class for classifying malaria cell images. Here's how we can explain the approach:
 
@@ -103,3 +103,46 @@ Defines a convolutional neural network (CNN) model called `MosquitoNet` using Py
    - The model is then moved to the appropriate device (GPU or CPU) using `model.to(device)`.
 
 Overall, this approach follows a standard CNN architecture for image classification tasks, incorporating convolutional layers for feature extraction and fully connected layers for classification. Dropout regularization is used to prevent overfitting, and the model is dynamically moved to the available hardware device for efficient computation.
+
+![fourth_image](https://github.com/Ashishlathkar77/Malaria-Cell-Image-Classification/blob/main/Visualizations/Screenshot%20(2346).png)
+
+## Training and Testing:
+
+The `train.py` script is responsible for training a deep learning model for malaria cell image classification using PyTorch. Here's an explanation of how the approach is structured:
+
+1. **Importing Libraries**:
+   - The script starts by importing necessary libraries such as `torch`, `torch.nn`, `torch.optim`, and `torch.utils.data` for building and training neural networks, as well as `transforms` from `torchvision` for image transformations.
+
+2. **Defining Device and Hyperparameters**:
+   - The device (GPU or CPU) is defined based on the availability of CUDA.
+   - Hyperparameters such as the number of epochs, batch size, and learning rate are specified.
+
+3. **Defining Data Transformations**:
+   - Data transformations are defined using `transforms.Compose`. These transformations include resizing, random horizontal and vertical flips, random rotation, converting images to tensors, and normalization.
+
+4. **Loading Dataset and Data Loader**:
+   - The `MalariaDataset` class from `dataset.py` is used to load the dataset. The dataset directory and defined transformations are passed as arguments.
+   - A `DataLoader` is created to iterate over batches of the dataset during training.
+
+5. **Instantiating Model**:
+   - An instance of the `MosquitoNet` model is created from `mymodel.py`. The model is moved to the specified device.
+
+6. **Defining Loss Function and Optimizer**:
+   - The cross-entropy loss function and the Adam optimizer are defined.
+   - The model parameters are passed to the optimizer for optimization.
+
+7. **Training Loop**:
+   - The script enters a loop over the specified number of epochs.
+   - Within each epoch, the model is set to training mode (`model.train()`).
+   - The training data loader is iterated over, and for each batch:
+     - Input images and labels are moved to the specified device.
+     - The optimizer gradients are zeroed.
+     - Forward pass is performed through the model, and loss is calculated.
+     - Backward pass is executed, and model parameters are updated.
+     - Training loss, accuracy, and other statistics are updated.
+   - At the end of each epoch, the average loss and accuracy for the epoch are printed.
+
+8. **Saving the Trained Model**:
+   - After training, the trained model's state dictionary is saved to a file named `model.pth` using `torch.save`.
+
+Overall, this approach follows a standard training procedure for deep learning models, including data loading, model instantiation, defining loss and optimizer, training loop, and model saving. The script is structured to ensure efficient training and easy reproducibility.
