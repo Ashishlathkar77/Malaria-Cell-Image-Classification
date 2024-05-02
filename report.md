@@ -50,7 +50,7 @@ Fourth Sample:
 
 Defines a custom dataset class called `MalariaDataset` for handling malaria cell images. Additionally, it includes preprocessing and transformation steps using PyTorch's `transforms` module.
 
-Here's how this approach was implemented and can be described for a report:
+Here's how this approach was implemented:
 
 1. **Custom Dataset Class (MalariaDataset)**:
    - The `MalariaDataset` class is created by subclassing `torch.utils.data.Dataset`, making it compatible with PyTorch's data loading utilities.
@@ -72,3 +72,34 @@ Here's how this approach was implemented and can be described for a report:
    - Class counts are calculated to determine the distribution of images across different classes in the dataset.
 
 This approach provides a structured and scalable solution for handling image data, including loading, preprocessing, and transformation, making it suitable for training deep learning models for malaria cell image classification.
+
+## MosquitoNet - MyModel
+
+Defines a convolutional neural network (CNN) model called `MosquitoNet` using PyTorch's `nn.Module` class for classifying malaria cell images. Here's how we can explain the approach:
+
+1. **Model Architecture**:
+   - The `MosquitoNet` model consists of three convolutional layers (`layer1`, `layer2`, and `layer3`) followed by fully connected layers (`fc1`, `fc2`, and `fc3`).
+   - Each convolutional layer is defined as a sequential combination of operations:
+     - Convolutional operation using `nn.Conv2d` to extract features from input images.
+     - Batch normalization (`nn.BatchNorm2d`) to improve the stability and speed of training by normalizing the input to each layer.
+     - ReLU activation function (`nn.ReLU`) to introduce non-linearity.
+     - Max pooling (`nn.MaxPool2d`) to downsample the feature maps and reduce spatial dimensions.
+   - The fully connected layers (`fc1`, `fc2`, and `fc3`) are responsible for combining the features extracted by convolutional layers and making predictions.
+   - Dropout (`nn.Dropout2d`) is applied to the fully connected layers to prevent overfitting by randomly setting a fraction of input units to zero during training.
+
+2. **Forward Method**:
+   - The `forward` method defines the forward pass of the model.
+   - Input images (`x`) are passed through each layer sequentially, applying the defined operations.
+   - The output of the final fully connected layer (`fc3`) represents the class scores for each image.
+   - The model returns the output scores, which can be used to compute loss and make predictions.
+
+3. **Device Specification**:
+   - The code checks whether a GPU (CUDA) is available using `torch.cuda.is_available()`.
+   - If a GPU is available, the model is moved to the GPU device (`cuda:0`) using `model.to(device)`.
+   - If no GPU is available, the model remains on the CPU device.
+
+4. **Model Instantiation**:
+   - An instance of the `MosquitoNet` model is created using `model = MosquitoNet()`.
+   - The model is then moved to the appropriate device (GPU or CPU) using `model.to(device)`.
+
+Overall, this approach follows a standard CNN architecture for image classification tasks, incorporating convolutional layers for feature extraction and fully connected layers for classification. Dropout regularization is used to prevent overfitting, and the model is dynamically moved to the available hardware device for efficient computation.
